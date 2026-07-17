@@ -18,4 +18,7 @@ declare module '#imports' {
   export { InvalidMatchPattern, MatchPattern } from 'wxt/utils/match-patterns';
   export { useState, useCallback, useMemo, useEffect, useRef, useContext, useReducer } from 'react';
   export { fakeBrowser } from 'wxt/testing';
+  export { FeatureSection } from '../src/components/feature-section';
+  export { KeywordManager } from '../src/components/keyword-manager';
+  export { useSettings } from '../src/hooks/use-settings';
 }

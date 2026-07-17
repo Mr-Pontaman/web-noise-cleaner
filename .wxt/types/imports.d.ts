@@ -2,7 +2,9 @@
 export {}
 declare global {
   const ContentScriptContext: typeof import('wxt/utils/content-script-context').ContentScriptContext
+  const FeatureSection: typeof import('/home/kouhei/Code/development/extenstion-1/wxt-dev-wxt/src/components/feature-section').FeatureSection
   const InvalidMatchPattern: typeof import('wxt/utils/match-patterns').InvalidMatchPattern
+  const KeywordManager: typeof import('/home/kouhei/Code/development/extenstion-1/wxt-dev-wxt/src/components/keyword-manager').KeywordManager
   const MatchPattern: typeof import('wxt/utils/match-patterns').MatchPattern
   const browser: typeof import('wxt/browser').browser
   const createIframeUi: typeof import('wxt/utils/content-script-ui/iframe').createIframeUi
@@ -24,6 +26,7 @@ declare global {
   const useMemo: typeof import('react').useMemo
   const useReducer: typeof import('react').useReducer
   const useRef: typeof import('react').useRef
+  const useSettings: typeof import('/home/kouhei/Code/development/extenstion-1/wxt-dev-wxt/src/hooks/use-settings').useSettings
   const useState: typeof import('react').useState
 }
 // for type re-export
