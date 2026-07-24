@@ -2,9 +2,9 @@ export const GITHUB_REPO = "https://github.com/Mr-Pontaman/web-noise-cleaner";
 export const RELEASE_URL = `${GITHUB_REPO}/releases/continuous`;
 
 export const metadata = {
-  title: "Web Noise Cleaner - ブラウザのノイズを除去",
+  title: "Web Noise Cleaner",
   description:
-    "X（Twitter）・YouTube・Google・Yahoo! JAPAN から不要なノイズを除去。キーワードフィルター、要素非表示、英語化など、カスタマイズ可能な設定でクリーンなWeb体験を。",
+    "X（Twitter）・YouTube・Google・Yahoo! JAPAN から不要なノイズを除去",
 };
 
 // HERO

@@ -12,12 +12,10 @@ import { features, supportedSites, installSteps, GITHUB_REPO, RELEASE_URL ,metad
     <section class="relative overflow-hidden px-6 py-24 sm:py-32 lg:px-8">
       <div class="mx-auto max-w-4xl text-center">
         <h1 class="text-4xl font-bold tracking-tight sm:text-6xl">
-          Web Noise Cleaner
+          {metadata.title}
         </h1>
         <p class="mt-6 text-lg leading-8 text-muted-foreground">
-          X（Twitter）・YouTube・Google・Yahoo! JAPAN から不要なノイズを除去。
-          キーワードフィルター、要素非表示、英語化など、カスタマイズ可能な設定で
-          クリーンなWeb体験を。
+          {metadata.description}
         </p>
         <div class="mt-10 flex items-center justify-center gap-x-6">
           <a
@@ -25,12 +23,6 @@ import { features, supportedSites, installSteps, GITHUB_REPO, RELEASE_URL ,metad
             class={cn(buttonVariants({ variant: "default" }), "px-6 py-3 text-sm font-semibold")}
           >
             ダウンロード
-          </a>
-          <a
-            href={GITHUB_REPO}
-            class={cn(buttonVariants({ variant: "link" }), "px-6 py-3 text-sm font-semibold")}
-          >
-            GitHub →
           </a>
         </div>
       </div>
@@ -73,7 +65,7 @@ import { features, supportedSites, installSteps, GITHUB_REPO, RELEASE_URL ,metad
     <!-- Installation -->
     <section class="px-6 py-16 lg:px-8">
       <div class="mx-auto max-w-5xl">
-        <h2 class="text-2xl font-bold text-center mb-12">導入方法 (GitHub Releases)</h2>
+        <h2 class="text-2xl font-bold text-center mb-12">インストール方法</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {installSteps.map((item) => (
             <Card className="p-6 flex flex-col justify-between">

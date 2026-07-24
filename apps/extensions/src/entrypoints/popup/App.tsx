@@ -1,10 +1,10 @@
-import { Separator } from "@/components/ui/separator";
+import { Separator } from "@web-noise-cleaner/ui/components/ui/separator";
+import { Skeleton } from "@web-noise-cleaner/ui/components/ui/skeleton";
 import { ModeToggle } from "@/components/theme/mode-toggle";
 import { FeatureSection } from "@/components/feature-section";
 import { KeywordManager } from "@/components/keyword-manager";
 import { FeatureSettings } from "@/types";
 import { useSettings } from "@/hooks/use-settings";
-import { Skeleton } from "@/components/ui/skeleton";
 import { metadata } from "@/lib/metadata";
 
 const App = () => {
