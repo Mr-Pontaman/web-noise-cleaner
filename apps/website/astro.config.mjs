@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
+import { GITHUB_REPO } from "./constants";
 
 export default defineConfig({
   integrations: [react()],
@@ -8,7 +9,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   // GitHub Pages のベースURL
-  site: "https://kouhei-github.github.io",
+  site: { GITHUB_REPO },
   base: "/web-noise-cleaner",
   outDir: "dist",
   build: {
