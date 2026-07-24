@@ -56,16 +56,15 @@ export const faqs = [
   {
     question: "Chrome Web Storeからインストールできますか？",
     answer:
-      "いいえ、現在はストアを通さず GitHub Releases からの直接ZIP配布（デベロッパーモード使用）を採用しています。",
+      "いいえ、ストアで配布するには料金がかかるため、直接zipファイルとして配布しています。",
   },
   {
     question: "自動でアップデートされますか？",
     answer:
-      "ストア版ではないため自動更新はされません。最新版を利用するには、GitHub Releases から新しいZIPをダウンロードしてフォルダを差し替えていただく必要があります。",
+      "ストア版ではないため自動更新はされません。最新版を利用するにはダウンロードリンクから新しいzipファイルをダウンロードし、拡張機能として読み込ませる必要があります。",
   },
   {
     question: "どのブラウザで動作しますか？",
-    answer:
-      "Google Chrome やその他 Chromium系ブラウザ（Brave、Microsoft Edgeなど、MV3に対応したブラウザ）で動作します。",
+    answer: "Google Chrome、Brave で動作確認済み ",
   },
 ];

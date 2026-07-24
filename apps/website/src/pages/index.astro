@@ -2,9 +2,9 @@
 import Layout from '@/layouts/Layout.astro';
 import { Card, CardHeader, CardTitle, CardDescription } from "@web-noise-cleaner/ui/components/ui/card";
 import { buttonVariants } from "@web-noise-cleaner/ui/components/ui/button";
+import { FaqSection } from "@/components/FaqSection";
 import { cn } from "@web-noise-cleaner/ui/lib/utils";
-import { features, supportedSites, installSteps, RELEASE_URL, metadata ,faqs } from '@/constants';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@web-noise-cleaner/ui/components/ui/accordion";
+import { features, supportedSites, installSteps, RELEASE_URL, metadata } from '@/constants';
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const img = (path: string) => base + path.replace(/^\//, '');
@@ -154,24 +154,8 @@ const img = (path: string) => base + path.replace(/^\//, '');
         </p>
       </div>
     </section>
-<!-- FAQ Section -->
-    <section class="px-6 py-16 lg:px-8 bg-muted/30">
-      <div class="mx-auto max-w-3xl">
-        <h2 class="text-2xl font-bold text-center mb-12">よくある質問 (FAQ)</h2>
-        <Accordion client:load type="single" collapsible className="w-full">
-          {faqs.map((faq, index) => (
-            <AccordionItem value={`item-${index}`}>
-              <AccordionTrigger className="text-left font-semibold">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground leading-relaxed">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </div>
-    </section>
+    <!-- FAQ Section -->
+    <FaqSection client:only="react" />
     <!-- Footer -->
     <footer class="px-6 py-8 text-center text-sm text-muted-foreground border-t">
       <p>&copy; {new Date().getFullYear()} Web Noise Cleaner</p>
