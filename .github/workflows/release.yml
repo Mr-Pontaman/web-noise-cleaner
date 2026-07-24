@@ -1,0 +1,99 @@
+name: Build and Release Extension
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "apps/extensions/**"
+      - "packages/ui/**"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release version (e.g. v0.2.0)"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.10.0
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build extension
+        run: pnpm --filter @web-noise-cleaner/extensions build
+
+      - name: Create zip for Chrome
+        run: pnpm --filter @web-noise-cleaner/extensions zip
+
+      - name: Upload zip as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: chrome-extension
+          path: apps/extensions/.output/*.zip
+
+      - name: Generate release tag
+        id: tag
+        run: |
+          if [ "${{ github.event.inputs.version }}" != "" ]; then
+            echo "tag=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            echo "tag=continuous" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Delete old continuous release
+        if: steps.tag.outputs.tag == 'continuous'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        continue-on-error: true
+        run: |
+          gh release delete continuous --yes 2>/dev/null || true
+          git push --delete origin continuous 2>/dev/null || true
+
+      - name: Create Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ZIP_FILE=$(ls apps/extensions/.output/*.zip | head -1)
+          ZIP_NAME=$(basename "$ZIP_FILE")
+          TAG="${{ steps.tag.outputs.tag }}"
+
+          gh release create "$TAG" \
+            --title "Web Noise Cleaner $TAG" \
+            --notes "自動ビルドされた拡張機能です。
+
+            ### インストール方法
+            1. このzipをダウンロードして解凍
+            2. Chromeの拡張機能管理ページ（chrome://extensions/）を開く
+            3. 右上の「デベロッパーモード」をON
+            4. 「パッケージ化されていない拡張機能を読み込む」で解凍したフォルダを選択" \
+            "$ZIP_FILE#$ZIP_NAME" \
+            --target "${{ github.sha }}"
