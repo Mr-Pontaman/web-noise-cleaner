@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@import "@web-noise-cleaner/ui/styles";
+
+/* Extensions-specific layout overrides */
+body {
+  letter-spacing: var(--tracking-normal);
+}
