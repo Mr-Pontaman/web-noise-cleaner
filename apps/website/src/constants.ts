@@ -6,6 +6,7 @@ export const metadata = {
   description:
     "X（Twitter）・YouTube・Google・Yahoo! JAPAN から不要なノイズを除去。キーワードフィルター、要素非表示、英語化など、カスタマイズ可能な設定でクリーンなWeb体験を。",
 };
+
 // HERO
 export const features = [
   {
