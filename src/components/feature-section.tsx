@@ -64,6 +64,7 @@ export const FeatureSection = ({
                   buttonVariants({ variant: "link" }),
                   "hover:opacity-80"
                 )}
+                aria-label="機能の詳細を表示"
               >
                 <Info className="size-3.5" />
               </PopoverTrigger>

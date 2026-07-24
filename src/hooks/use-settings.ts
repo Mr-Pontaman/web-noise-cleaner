@@ -1,7 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { browser } from "wxt/browser";
 import { StorageSettings } from "@/types";
 import { DEFAULT_SETTINGS } from "@/constants";
+import { getSettings } from "@/lib/storage";
 
 export const useSettings = () => {
   const queryClient = useQueryClient();
@@ -9,10 +9,7 @@ export const useSettings = () => {
   const query = useQuery<StorageSettings>({
     queryKey: ["settings"],
     queryFn: async () => {
-      const res = await browser.storage.local.get(
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        DEFAULT_SETTINGS as Record<string, any>
-      );
+      const res = await getSettings();
       return res as unknown as StorageSettings;
     },
   });
@@ -27,9 +24,14 @@ export const useSettings = () => {
     },
   });
 
+  const updateSettings = (newSettings: StorageSettings) => {
+    mutation.mutate(newSettings);
+  };
+
   return {
     settings: query.data ?? DEFAULT_SETTINGS,
     isLoading: query.isLoading,
     mutation,
+    updateSettings,
   };
 };

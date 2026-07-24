@@ -8,7 +8,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { metadata } from "@/lib/metadata";
 
 const App = () => {
-  const { settings, isLoading, mutation } = useSettings();
+  const { settings, isLoading, updateSettings } = useSettings();
 
   if (isLoading) {
     return <Skeleton className="w-80 h-128" />;
@@ -18,11 +18,11 @@ const App = () => {
     key: "force_english" | "element_filter" | "keyword_filter",
     updatedConfig: FeatureSettings
   ) => {
-    mutation.mutate({ ...settings, [key]: updatedConfig });
+    updateSettings({ ...settings, [key]: updatedConfig });
   };
 
   const handleKeywordsChange = (newKeywords: string[]) => {
-    mutation.mutate({ ...settings, noise_keywords: newKeywords });
+    updateSettings({ ...settings, noise_keywords: newKeywords });
   };
 
   return (

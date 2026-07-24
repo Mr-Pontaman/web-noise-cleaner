@@ -69,12 +69,6 @@ export const SITE_CONFIGS: Record<SiteKey, SiteConfig> = {
   },
 };
 
-// UIで使うサイト一覧
-export const SITES = Object.entries(SITE_CONFIGS).map(([id, cfg]) => ({
-  id: id as SiteKey,
-  label: cfg.label,
-}));
-
 // デフォルトのノイズキーワード
 export const NOISE_KEYWORDS = ["海外の反応", "日本絶賛", "日本称賛"];
 
@@ -95,8 +89,8 @@ export const DEFAULT_SETTINGS = {
   noise_keywords: NOISE_KEYWORDS,
 } satisfies StorageSettings;
 
-// URLマッチパターン
-export const MATCH_URLS = [
+// URLマッチパターン（wxt.config.ts の host_permissions と同期すること）
+const MATCH_URLS = [
   { name: "google", url: "*://*.google.com/*" },
   { name: "twitter", url: "*://*.twitter.com/*" },
   { name: "x", url: "*://*.x.com/*" },

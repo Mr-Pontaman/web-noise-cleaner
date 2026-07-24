@@ -1,9 +1,9 @@
-import { ChangeEvent } from "react";
+import { useState, type FormEvent, type ChangeEvent } from "react";
+import { z } from "zod";
 import { Input } from "@/components/ui/input";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { badgeVariants } from "@/components/ui/badge";
 import { X, RotateCcw } from "lucide-react";
-import { useUIStore } from "@/stores/ui-store";
 import { NOISE_KEYWORDS } from "@/constants";
 import { toast } from "sonner";
 import { Card } from "./ui/card";
@@ -18,6 +18,11 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
+const keywordSchema = z
+  .string()
+  .min(1, "キーワードを入力してください")
+  .max(50, "50文字以内で入力してください");
+
 interface KeywordManagerProps {
   keywords: string[];
   onKeywordsChange: (newKeywords: string[]) => void;
@@ -27,23 +32,30 @@ export const KeywordManager = ({
   keywords,
   onKeywordsChange,
 }: KeywordManagerProps) => {
-  const { newKeyword, setNewKeyword, resetNewKeyword } = useUIStore();
+  const [newKeyword, setNewKeyword] = useState("");
 
-  const handleAddKeyword = (e: React.SubmitEvent<HTMLFormElement>) => {
+  const handleAddKeyword = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const trimmed = newKeyword.trim();
 
-    if (!trimmed) {
+    const parsed = keywordSchema.safeParse(trimmed);
+    if (!parsed.success) {
+      toast.error(parsed.error.issues[0].message, {
+        position: "bottom-center",
+      });
       return;
-    } else if (keywords.includes(trimmed)) {
+    }
+
+    if (keywords.includes(trimmed)) {
       toast.error("既に存在します。", {
         position: "bottom-center",
       });
+      return;
     }
 
     onKeywordsChange([...keywords, trimmed]);
-    resetNewKeyword();
+    setNewKeyword("");
   };
 
   const handleDeleteKeyword = (wordToDelete: string) => {
