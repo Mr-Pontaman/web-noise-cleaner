@@ -1,9 +1,12 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { GITHUB_REPO, RELEASE_URL } from "../constants";
+import Layout from '@/layouts/Layout.astro';
+import { Card, CardHeader, CardTitle, CardDescription } from "@web-noise-cleaner/ui/components/ui/card";
+import { buttonVariants } from "@web-noise-cleaner/ui/components/ui/button";
+import { cn } from "@web-noise-cleaner/ui/lib/utils";
+import { features, supportedSites, installSteps, GITHUB_REPO, RELEASE_URL ,metadata} from '@/constants';
 ---
 
-<Layout title="Web Noise Cleaner - ブラウザのノイズを除去">
+<Layout title={metadata.title} description={metadata.description}>
   <main class="min-h-screen">
     <!-- Hero -->
     <section class="relative overflow-hidden px-6 py-24 sm:py-32 lg:px-8">
@@ -19,13 +22,13 @@ import { GITHUB_REPO, RELEASE_URL } from "../constants";
         <div class="mt-10 flex items-center justify-center gap-x-6">
           <a
             href={RELEASE_URL}
-            class="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm hover:opacity-90 transition-opacity"
+            class={cn(buttonVariants({ variant: "default" }), "px-6 py-3 text-sm font-semibold")}
           >
             ダウンロード
           </a>
           <a
-              href={GITHUB_REPO}
-            class="text-sm font-semibold leading-6 text-foreground hover:underline"
+            href={GITHUB_REPO}
+            class={cn(buttonVariants({ variant: "link" }), "px-6 py-3 text-sm font-semibold")}
           >
             GitHub →
           </a>
@@ -38,27 +41,16 @@ import { GITHUB_REPO, RELEASE_URL } from "../constants";
       <div class="mx-auto max-w-5xl">
         <h2 class="text-2xl font-bold text-center mb-12">主な機能</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="rounded-xl border bg-card p-6 shadow-sm">
-            <h3 class="font-semibold mb-2">キーワードフィルター</h3>
-            <p class="text-sm text-muted-foreground">
-              指定したキーワードが含まれる投稿や記事を自動的に非表示にします。
-              例えば「海外の反応」「日本絶賛」などのノイズを除去。
-            </p>
-          </div>
-          <div class="rounded-xl border bg-card p-6 shadow-sm">
-            <h3 class="font-semibold mb-2">要素フィルター</h3>
-            <p class="text-sm text-muted-foreground">
-              Xのトレンドやおすすめユーザー、YouTubeのサイドバーやおすすめ動画など、
-              サイト固有の不要要素をワンクリックで非表示に。
-            </p>
-          </div>
-          <div class="rounded-xl border bg-card p-6 shadow-sm">
-            <h3 class="font-semibold mb-2">英語版サイト</h3>
-            <p class="text-sm text-muted-foreground">
-              Google検索を英語版に切り替え。よりグローバルな検索結果と
-              ノイズの少ない検索体験を。
-            </p>
-          </div>
+          {features.map((feature) => (
+            <Card className="p-6">
+              <CardHeader className="p-0">
+                <CardTitle className="text-lg font-semibold mb-2">{feature.title}</CardTitle>
+                <CardDescription className="text-sm text-muted-foreground leading-relaxed">
+                  {feature.description}
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          ))}
         </div>
       </div>
     </section>
@@ -68,29 +60,41 @@ import { GITHUB_REPO, RELEASE_URL } from "../constants";
       <div class="mx-auto max-w-5xl text-center">
         <h2 class="text-2xl font-bold mb-8">対応サイト</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div class="rounded-lg border bg-card p-6">
-            <div class="text-3xl mb-2">𝕏</div>
-            <div class="font-medium">X (Twitter)</div>
-          </div>
-          <div class="rounded-lg border bg-card p-6">
-            <div class="text-3xl mb-2">▶</div>
-            <div class="font-medium">YouTube</div>
-          </div>
-          <div class="rounded-lg border bg-card p-6">
-            <div class="text-3xl mb-2">G</div>
-            <div class="font-medium">Google</div>
-          </div>
-          <div class="rounded-lg border bg-card p-6">
-            <div class="text-3xl mb-2">Y!</div>
-            <div class="font-medium">Yahoo! JAPAN</div>
-          </div>
+          {supportedSites.map((site) => (
+            <Card className="p-6 flex flex-col items-center justify-center">
+              <div class="text-3xl mb-2">{site.icon}</div>
+              <div class="font-medium text-sm">{site.name}</div>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Installation -->
+    <section class="px-6 py-16 lg:px-8">
+      <div class="mx-auto max-w-5xl">
+        <h2 class="text-2xl font-bold text-center mb-12">導入方法 (GitHub Releases)</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {installSteps.map((item) => (
+            <Card className="p-6 flex flex-col justify-between">
+              <div>
+                <span class="text-xs font-bold text-primary tracking-wider uppercase">
+                  Step {item.step}
+                </span>
+                <h3 class="font-semibold text-base mt-2 mb-2">{item.title}</h3>
+                <p class="text-xs text-muted-foreground leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            </Card>
+          ))}
         </div>
       </div>
     </section>
 
     <!-- Footer -->
     <footer class="px-6 py-8 text-center text-sm text-muted-foreground border-t">
-      <p>Web Noise Cleaner &mdash; クリーンなWebブラウジングを。</p>
+      <p>&copy; {new Date().getFullYear()} Web Noise Cleaner</p>
     </footer>
   </main>
 </Layout>
