@@ -19,7 +19,8 @@ const img = (path: string) => base + path.replace(/^\//, '');
           src={img("hero-1.png")}
           alt=""
           aria-hidden="true"
-          class="absolute -left-16 top-1/2 -translate-y-1/2 h-[130%] w-auto rotate-[-38deg] origin-center object-contain opacity-85 shadow-2xl ring-1 ring-border/50 rounded-2xl"
+          class="absolute top-1/2 -translate-y-1/2 h-[120%] w-auto rotate-[-38deg] origin-center object-contain opacity-85 shadow-2xl ring-1 ring-border/50 rounded-2xl"
+          style="mask-image: linear-gradient(to right, black 98%, transparent 98%); -webkit-mask-image: linear-gradient(to right, black 70%, transparent 85%);"
         />
       </div>
 
@@ -34,13 +35,13 @@ const img = (path: string) => base + path.replace(/^\//, '');
       </div>
 
       <!-- Hero content -->
-      <div class="relative z-10 mx-auto max-w-4xl text-center lg:pl-16 xl:pl-24">
+      <div class="relative z-10 mx-auto max-w-4xl grid place-items-center text-center lg:pl-16 xl:pl-24">
         <h1 class="text-4xl font-bold tracking-tight sm:text-6xl">
           <span class="bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
             {metadata.title}
           </span>
         </h1>
-        <p class="mt-6 text-lg leading-8 text-muted-foreground bg-background/40">
+        <p class="mt-6 text-lg leading-8 w-max text-muted-foreground ">
           {metadata.description}
         </p>
       </div>
