@@ -10,6 +10,9 @@ export default defineConfig({
   }),
   modules: ["@wxt-dev/module-react"],
   srcDir: "src",
+  zip: {
+    artifactTemplate: "web-noise-cleaner-{{browser}}-v{{version}}.zip",
+  },
   manifest: {
     name: appName,
     version: "0.1.0",

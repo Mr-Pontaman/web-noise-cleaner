@@ -36,21 +36,16 @@ export const installSteps = [
     step: "01",
     title: "ZIPのダウンロード",
     description:
-      "GitHub Releasesから最新バージョンのビルド済みZIPファイルをダウンロードします。",
+      "ダウンロードリンクの「Assets」の一番上にある `web-noise-cleaner-{{browser}}-v{{version}}.zip` という形式のzipファイルをDLし、解凍します。",
   },
   {
     step: "02",
-    title: "ファイルの展開",
-    description: "ダウンロードしたZIPファイルを任意のフォルダに解凍します。",
-  },
-  {
-    step: "03",
     title: "拡張機能の読み込み",
     description:
       "ブラウザの拡張機能管理画面（chrome://extensions）を開き、右上の「デベロッパーモード」を有効にします。",
   },
   {
-    step: "04",
+    step: "03",
     title: "フォルダの選択",
     description:
       "「パッケージ化されていない拡張機能を読み込む」をクリックし、解凍したフォルダを選択して完了です。",

@@ -88,10 +88,10 @@ jobs:
 
           gh release create "$TAG" \
             --title "Web Noise Cleaner $TAG" \
-            --notes "自動ビルドされた拡張機能です。
+            --notes "
 
             ### インストール方法
-            1. このzipをダウンロードして解凍
+            1. 「Assets」の一番上にある、**$ZIP_NAME** をDLして解凍
             2. Chromeの拡張機能管理ページ（chrome://extensions/）を開く
             3. 右上の「デベロッパーモード」をON
             4. 「パッケージ化されていない拡張機能を読み込む」で解凍したフォルダを選択" \
