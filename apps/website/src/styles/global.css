@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* 
+ * Import shared shadcn UI theme variables.
+ * This relies on Vite resolving the package entry for @web-noise-cleaner/ui/styles
+ */
+@import "@web-noise-cleaner/ui/styles";

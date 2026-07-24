@@ -1,0 +1,96 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { GITHUB_REPO } from "../constants";
+---
+
+<Layout title="Web Noise Cleaner - ブラウザのノイズを除去">
+  <main class="min-h-screen">
+    <!-- Hero -->
+    <section class="relative overflow-hidden px-6 py-24 sm:py-32 lg:px-8">
+      <div class="mx-auto max-w-4xl text-center">
+        <h1 class="text-4xl font-bold tracking-tight sm:text-6xl">
+          Web Noise Cleaner
+        </h1>
+        <p class="mt-6 text-lg leading-8 text-muted-foreground">
+          X（Twitter）・YouTube・Google・Yahoo! JAPAN から不要なノイズを除去。
+          キーワードフィルター、要素非表示、英語化など、カスタマイズ可能な設定で
+          クリーンなWeb体験を。
+        </p>
+        <div class="mt-10 flex items-center justify-center gap-x-6">
+          <a
+            href="https://chrome.google.com/webstore"
+            class="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm hover:opacity-90 transition-opacity"
+          >
+            Chromeに追加
+          </a>
+          <a
+              href={GITHUB_REPO}
+            class="text-sm font-semibold leading-6 text-foreground hover:underline"
+          >
+            GitHub →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="px-6 py-16 lg:px-8">
+      <div class="mx-auto max-w-5xl">
+        <h2 class="text-2xl font-bold text-center mb-12">主な機能</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="rounded-xl border bg-card p-6 shadow-sm">
+            <h3 class="font-semibold mb-2">キーワードフィルター</h3>
+            <p class="text-sm text-muted-foreground">
+              指定したキーワードが含まれる投稿や記事を自動的に非表示にします。
+              例えば「海外の反応」「日本絶賛」などのノイズを除去。
+            </p>
+          </div>
+          <div class="rounded-xl border bg-card p-6 shadow-sm">
+            <h3 class="font-semibold mb-2">要素フィルター</h3>
+            <p class="text-sm text-muted-foreground">
+              Xのトレンドやおすすめユーザー、YouTubeのサイドバーやおすすめ動画など、
+              サイト固有の不要要素をワンクリックで非表示に。
+            </p>
+          </div>
+          <div class="rounded-xl border bg-card p-6 shadow-sm">
+            <h3 class="font-semibold mb-2">英語版サイト</h3>
+            <p class="text-sm text-muted-foreground">
+              Google検索を英語版に切り替え。よりグローバルな検索結果と
+              ノイズの少ない検索体験を。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Supported Sites -->
+    <section class="px-6 py-16 lg:px-8 bg-muted/30">
+      <div class="mx-auto max-w-5xl text-center">
+        <h2 class="text-2xl font-bold mb-8">対応サイト</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="rounded-lg border bg-card p-6">
+            <div class="text-3xl mb-2">𝕏</div>
+            <div class="font-medium">X (Twitter)</div>
+          </div>
+          <div class="rounded-lg border bg-card p-6">
+            <div class="text-3xl mb-2">▶</div>
+            <div class="font-medium">YouTube</div>
+          </div>
+          <div class="rounded-lg border bg-card p-6">
+            <div class="text-3xl mb-2">G</div>
+            <div class="font-medium">Google</div>
+          </div>
+          <div class="rounded-lg border bg-card p-6">
+            <div class="text-3xl mb-2">Y!</div>
+            <div class="font-medium">Yahoo! JAPAN</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="px-6 py-8 text-center text-sm text-muted-foreground border-t">
+      <p>Web Noise Cleaner &mdash; クリーンなWebブラウジングを。</p>
+    </footer>
+  </main>
+</Layout>

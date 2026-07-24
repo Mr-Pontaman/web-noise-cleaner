@@ -1,0 +1,28 @@
+---
+import "../styles/global.css";
+export interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description || "Web Noise Cleaner"} />
+  <title>{title}</title>
+  <link rel="icon" href="/web-noise-cleaner/favicon.png" />
+</head>
+<body>
+  <slot />
+  <script is:inline>
+    (function() {
+      const t = localStorage.getItem('theme');
+      const s = t || (window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+      document.documentElement.classList.add(s);
+    })();
+  </script>
+</body>
+</html>

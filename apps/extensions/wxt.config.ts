@@ -4,7 +4,6 @@ import { defineConfig } from "wxt";
 
 const { appName, description } = metadata;
 
-// See https://wxt.dev/api/config.html
 export default defineConfig({
   vite: () => ({
     plugins: [tailwindcss()],
@@ -15,7 +14,6 @@ export default defineConfig({
     name: appName,
     version: "0.1.0",
     description: description,
-    // このstorageはlocalStorageじゃなくて拡張機能用のstorageのこと
     permissions: ["storage", "declarativeNetRequest"],
     host_permissions: [
       "*://*.x.com/*",
