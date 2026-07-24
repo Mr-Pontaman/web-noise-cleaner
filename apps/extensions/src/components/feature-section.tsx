@@ -1,17 +1,17 @@
 import { Info } from "lucide-react";
-import { Card } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Card } from "@web-noise-cleaner/ui/components/ui/card";
+import { Label } from "@web-noise-cleaner/ui/components/ui/label";
+import { Switch } from "@web-noise-cleaner/ui/components/ui/switch";
+import { Checkbox } from "@web-noise-cleaner/ui/components/ui/checkbox";
+import { Button, buttonVariants } from "@web-noise-cleaner/ui/components/ui/button";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@web-noise-cleaner/ui/components/ui/popover";
+import { cn } from "@web-noise-cleaner/ui/lib/utils";
 import { SITE_CONFIGS, SiteKey } from "@/constants";
 import { FeatureSettings } from "@/types";
-import { cn } from "@/lib/utils";
 
 interface FeatureSectionProps {
   title: string;

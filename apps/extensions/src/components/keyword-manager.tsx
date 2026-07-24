@@ -1,13 +1,10 @@
 import { useState, type FormEvent, type ChangeEvent } from "react";
 import { z } from "zod";
-import { Input } from "@/components/ui/input";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { badgeVariants } from "@/components/ui/badge";
-import { X, RotateCcw } from "lucide-react";
-import { NOISE_KEYWORDS } from "@/constants";
-import { toast } from "sonner";
-import { Card } from "./ui/card";
-import { cn } from "@/lib/utils";
+import { Input } from "@web-noise-cleaner/ui/components/ui/input";
+import { Button, buttonVariants } from "@web-noise-cleaner/ui/components/ui/button";
+import { badgeVariants } from "@web-noise-cleaner/ui/components/ui/badge";
+import { Card } from "@web-noise-cleaner/ui/components/ui/card";
+import { cn } from "@web-noise-cleaner/ui/lib/utils";
 import {
   Dialog,
   DialogClose,
@@ -16,7 +13,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
+} from "@web-noise-cleaner/ui/components/ui/dialog";
+import { X, RotateCcw } from "lucide-react";
+import { NOISE_KEYWORDS } from "@/constants";
+import { toast } from "sonner";
 
 const keywordSchema = z
   .string()

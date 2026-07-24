@@ -11,18 +11,29 @@ const { title, description } = Astro.props;
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content={description || "Web Noise Cleaner"} />
+  <meta name="description" content={description} />
   <title>{title}</title>
-  <link rel="icon" href="/web-noise-cleaner/favicon.png" />
+    <link rel="icon" href="./icon.png" />
 </head>
 <body>
   <slot />
   <script is:inline>
-    (function() {
-      const t = localStorage.getItem('theme');
-      const s = t || (window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
-      document.documentElement.classList.add(s);
-    })();
+const getThemePreference = () => {
+		if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+			return localStorage.getItem('theme');
+		}
+		return 'light'; // OSの設定に関わらず、デフォルトを強制的に light にする
+	};
+	const isDark = getThemePreference() === 'dark';
+	document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+ 
+	if (typeof localStorage !== 'undefined') {
+		const observer = new MutationObserver(() => {
+			const isDark = document.documentElement.classList.contains('dark');
+			localStorage.setItem('theme', isDark ? 'dark' : 'light');
+		});
+		observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+	}
   </script>
 </body>
 </html>

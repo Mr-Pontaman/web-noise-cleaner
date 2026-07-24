@@ -3,7 +3,8 @@ export const RELEASE_URL = `${GITHUB_REPO}/releases/continuous`;
 
 export const metadata = {
   title: "Web Noise Cleaner",
-  description: "X・YouTube等のノイズ除去",
+  description:
+    "X（Twitter）・YouTube・Google・Yahoo! JAPAN から不要なノイズを除去",
 };
 
 // HERO
