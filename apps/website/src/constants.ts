@@ -51,3 +51,21 @@ export const installSteps = [
       "「パッケージ化されていない拡張機能を読み込む」をクリックし、解凍したフォルダを選択して完了です。",
   },
 ];
+
+export const faqs = [
+  {
+    question: "Chrome Web Storeからインストールできますか？",
+    answer:
+      "いいえ、現在はストアを通さず GitHub Releases からの直接ZIP配布（デベロッパーモード使用）を採用しています。",
+  },
+  {
+    question: "自動でアップデートされますか？",
+    answer:
+      "ストア版ではないため自動更新はされません。最新版を利用するには、GitHub Releases から新しいZIPをダウンロードしてフォルダを差し替えていただく必要があります。",
+  },
+  {
+    question: "どのブラウザで動作しますか？",
+    answer:
+      "Google Chrome やその他 Chromium系ブラウザ（Brave、Microsoft Edgeなど、MV3に対応したブラウザ）で動作します。",
+  },
+];
