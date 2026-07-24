@@ -16,7 +16,6 @@ export const applyElementFilter = (
   });
 };
 
-// キーワードで絞り込む汎用関数
 export const applyKeywordFilter = (
   root: HTMLElement | Document,
   containerSelector: string,
