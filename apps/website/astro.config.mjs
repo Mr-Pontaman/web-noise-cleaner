@@ -7,7 +7,9 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  // import.meta.env.SITE で以下が出る
   site: "https://mr-pontaman.github.io",
+  // import.meta.env.BASE_URL で以下が出る
   base: "/web-noise-cleaner",
   outDir: "dist",
   build: {

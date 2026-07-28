@@ -3,7 +3,10 @@ import { Card } from "@web-noise-cleaner/ui/components/ui/card";
 import { Label } from "@web-noise-cleaner/ui/components/ui/label";
 import { Switch } from "@web-noise-cleaner/ui/components/ui/switch";
 import { Checkbox } from "@web-noise-cleaner/ui/components/ui/checkbox";
-import { Button, buttonVariants } from "@web-noise-cleaner/ui/components/ui/button";
+import {
+  Button,
+  buttonVariants,
+} from "@web-noise-cleaner/ui/components/ui/button";
 import {
   Popover,
   PopoverContent,

@@ -17,3 +17,21 @@
       📄 index.ts       ← This file is the entrypoint
       📄 style.css
 ```
+
+## メモ
+
+**ShadowDOM**:
+
+ブラウザ内で表示したHTMLのフォントサイズが小さいと感じた場合の対処
+
+-> https://wxt.dev/guide/resources/faq.html#my-content-script-ui-looks-different-on-certain-websites
+
+```
+-D postcss-rem-to-responsive-pixel
+```
+
+## TODO
+
+iframe
+
+- ShadowDOMだと Toast や Dialog と相性が悪い

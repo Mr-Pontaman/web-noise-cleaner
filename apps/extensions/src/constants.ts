@@ -1,4 +1,8 @@
-import { StorageSettings } from "./types";
+import {
+  FeatureSectionDef,
+  FloatingButtonPosition,
+  StorageSettings,
+} from "./types";
 
 interface SiteConfig {
   label: string;
@@ -6,6 +10,8 @@ interface SiteConfig {
   elementSelectors: readonly string[];
   forceEnglish?: () => void;
 }
+
+export const DARK_THEME_KEY = "vite-ui-theme";
 
 export type SiteKey = "google" | "twitter" | "youtube" | "yahoo";
 
@@ -87,10 +93,68 @@ export const DEFAULT_SETTINGS = {
     targets: { google: true, twitter: true, youtube: true, yahoo: true },
   },
   noise_keywords: NOISE_KEYWORDS,
+  floating_button: {
+    enabled: true,
+    position: "bottom-right",
+  },
 } satisfies StorageSettings;
 
+// ─── FeatureSection 共通定義 ────────────────────────────────────────
+// popup / content 両方で共有
+export const FEATURE_SECTIONS: FeatureSectionDef[] = [
+  {
+    key: "element_filter",
+    title: "要素フィルター",
+    description: "サイト固有の不要な要素（Xのトレンドなど）を排除",
+    allowedSites: ["twitter", "youtube"],
+    detailsMap: {
+      twitter: "広告やトレンド、おすすめユーザーを非表示にします。",
+      youtube: "動画終了後のおすすめ動画や、サイドバーを非表示にします。",
+    },
+  },
+  {
+    key: "keyword_filter",
+    title: "キーワード除去",
+    description: "指定キーワードが含まれるコンテンツ要素を非表示",
+    allowedSites: ["google", "twitter", "youtube", "yahoo"],
+    detailsMap: {
+      google: "キーワードが含まれる検索結果カードを非表示にします。",
+      twitter: "キーワードが含まれるツイートを非表示にします。",
+      youtube: "キーワードが含まれる動画を非表示にします。",
+      yahoo: "キーワードが含まれるニュース記事を非表示にします。",
+    },
+  },
+  {
+    key: "force_english",
+    title: "英語版サイト",
+    description: "英語版のサイトとして表示",
+    allowedSites: ["google"],
+    detailsMap: {
+      google: "Googleの検索エンジンを英語版にします。",
+    },
+  },
+];
+
+export const FLOATING_BUTTON_POSITION_LABELS: Record<
+  FloatingButtonPosition,
+  string
+> = {
+  "bottom-right": "右下",
+  "top-right": "右上",
+  "bottom-left": "左下",
+};
+
+export const FLOATING_BUTTON_POSITION_CLASSES: Record<
+  FloatingButtonPosition,
+  string
+> = {
+  "bottom-right": "bottom-4 right-4",
+  "top-right": "top-4 right-4",
+  "bottom-left": "bottom-4 left-4",
+};
+
 // URLマッチパターン（wxt.config.ts の host_permissions と同期すること）
-const MATCH_URLS = [
+export const MATCH_URLS = [
   { name: "google", url: "*://*.google.com/*" },
   { name: "twitter", url: "*://*.twitter.com/*" },
   { name: "x", url: "*://*.x.com/*" },

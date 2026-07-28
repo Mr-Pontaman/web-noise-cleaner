@@ -36,19 +36,19 @@ export const installSteps = [
     step: "01",
     title: "ZIPのダウンロード",
     description:
-      "ダウンロードリンクの「Assets」の一番上にある `web-noise-cleaner-{{browser}}-v{{version}}.zip` という形式のzipファイルをDLし、解凍します。",
+      "ダウンロードリンクをクリックし、「Assets」の一番上にある `web-noise-cleaner-{{browser}}-v{{version}}.zip` という形式のzipファイルをDLし、解凍する。",
   },
   {
     step: "02",
     title: "拡張機能の読み込み",
     description:
-      "ブラウザの拡張機能管理画面（chrome://extensions）を開き、右上の「デベロッパーモード」を有効にします。",
+      "ブラウザの拡張機能管理画面（chrome://extensions）を開き、右上の「デベロッパーモード」を有効にする。",
   },
   {
     step: "03",
     title: "フォルダの選択",
     description:
-      "「パッケージ化されていない拡張機能を読み込む」をクリックし、解凍したフォルダを選択して完了です。",
+      "「パッケージ化されていない拡張機能を読み込む」をクリックし、解凍したフォルダを選択して完了。",
   },
 ];
 
@@ -56,7 +56,7 @@ export const faqs = [
   {
     question: "Chrome Web Storeからインストールできますか？",
     answer:
-      "いいえ、ストアで配布するには料金がかかるため、直接zipファイルとして配布しています。",
+      "いいえ、ストアで配布するには料金がかかるため 直接zipファイルとして配布しています。",
   },
   {
     question: "自動でアップデートされますか？",

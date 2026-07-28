@@ -1,7 +1,10 @@
-import { useState, type FormEvent, type ChangeEvent } from "react";
+import { useState, type ChangeEvent } from "react";
 import { z } from "zod";
 import { Input } from "@web-noise-cleaner/ui/components/ui/input";
-import { Button, buttonVariants } from "@web-noise-cleaner/ui/components/ui/button";
+import {
+  Button,
+  buttonVariants,
+} from "@web-noise-cleaner/ui/components/ui/button";
 import { badgeVariants } from "@web-noise-cleaner/ui/components/ui/badge";
 import { Card } from "@web-noise-cleaner/ui/components/ui/card";
 import { cn } from "@web-noise-cleaner/ui/lib/utils";
@@ -34,7 +37,7 @@ export const KeywordManager = ({
 }: KeywordManagerProps) => {
   const [newKeyword, setNewKeyword] = useState("");
 
-  const handleAddKeyword = (e: FormEvent<HTMLFormElement>) => {
+  const handleAddKeyword = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const trimmed = newKeyword.trim();

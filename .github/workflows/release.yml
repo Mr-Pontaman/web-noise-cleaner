@@ -26,7 +26,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -91,7 +91,7 @@ jobs:
             --notes "
 
             ### インストール方法
-            1. 「Assets」の一番上にある、**$ZIP_NAME** をDLして解凍
+            1. 以下「Assets」の一番上にある、**$ZIP_NAME** をDLして解凍
             2. Chromeの拡張機能管理ページ（chrome://extensions/）を開く
             3. 右上の「デベロッパーモード」をON
             4. 「パッケージ化されていない拡張機能を読み込む」で解凍したフォルダを選択" \

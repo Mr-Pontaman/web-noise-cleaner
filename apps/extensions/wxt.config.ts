@@ -1,3 +1,4 @@
+import { MATCH_URLS } from "./src/constants";
 import { metadata } from "./src/lib/metadata";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "wxt";
@@ -18,13 +19,7 @@ export default defineConfig({
     version: "0.1.0",
     description: description,
     permissions: ["storage", "declarativeNetRequest"],
-    host_permissions: [
-      "*://*.x.com/*",
-      "*://*.twitter.com/*",
-      "*://*.youtube.com/*",
-      "*://*.google.com/*",
-      "*://*.yahoo.co.jp/*",
-    ],
+    host_permissions: MATCH_URLS.map((item) => item.url),
     icons: {
       "16": "icon/icon.png",
       "48": "icon/icon.png",
