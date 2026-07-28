@@ -13,7 +13,7 @@ interface SiteConfig {
 
 export const DARK_THEME_KEY = "vite-ui-theme";
 
-export type SiteKey = "google" | "twitter" | "youtube" | "yahoo";
+export type SiteKey = "google" | "x" | "youtube" | "yahoo";
 
 export const SITE_CONFIGS: Record<SiteKey, SiteConfig> = {
   google: {
@@ -46,9 +46,9 @@ export const SITE_CONFIGS: Record<SiteKey, SiteConfig> = {
       window.location.replace(url.toString());
     },
   },
-  twitter: {
+  x: {
     label: "X (Twitter)",
-    keywordContainer: "article",
+    keywordContainer: 'article[data-testid="tweet"]',
     elementSelectors: [
       '[aria-label*="トレンド"]',
       '[aria-label*="Trends"]',
@@ -82,15 +82,15 @@ export const NOISE_KEYWORDS = ["海外の反応", "日本絶賛", "日本称賛"
 export const DEFAULT_SETTINGS = {
   force_english: {
     enabled: true,
-    targets: { google: true, twitter: false, youtube: false, yahoo: false },
+    targets: { google: true, x: false, youtube: false, yahoo: false },
   },
   element_filter: {
     enabled: true,
-    targets: { google: false, twitter: true, youtube: true, yahoo: false },
+    targets: { google: false, x: true, youtube: true, yahoo: false },
   },
   keyword_filter: {
     enabled: true,
-    targets: { google: true, twitter: true, youtube: true, yahoo: true },
+    targets: { google: true, x: true, youtube: true, yahoo: true },
   },
   noise_keywords: NOISE_KEYWORDS,
   floating_button: {
@@ -106,9 +106,9 @@ export const FEATURE_SECTIONS: FeatureSectionDef[] = [
     key: "element_filter",
     title: "要素フィルター",
     description: "サイト固有の不要な要素（Xのトレンドなど）を排除",
-    allowedSites: ["twitter", "youtube"],
+    allowedSites: ["x", "youtube"],
     detailsMap: {
-      twitter: "広告やトレンド、おすすめユーザーを非表示にします。",
+      x: "広告やトレンド、おすすめユーザーを非表示にします。",
       youtube: "動画終了後のおすすめ動画や、サイドバーを非表示にします。",
     },
   },
@@ -116,10 +116,10 @@ export const FEATURE_SECTIONS: FeatureSectionDef[] = [
     key: "keyword_filter",
     title: "キーワード除去",
     description: "指定キーワードが含まれるコンテンツ要素を非表示",
-    allowedSites: ["google", "twitter", "youtube", "yahoo"],
+    allowedSites: ["google", "x", "youtube", "yahoo"],
     detailsMap: {
       google: "キーワードが含まれる検索結果カードを非表示にします。",
-      twitter: "キーワードが含まれるツイートを非表示にします。",
+      x: "キーワードが含まれるツイートを非表示にします。",
       youtube: "キーワードが含まれる動画を非表示にします。",
       yahoo: "キーワードが含まれるニュース記事を非表示にします。",
     },
@@ -156,7 +156,6 @@ export const FLOATING_BUTTON_POSITION_CLASSES: Record<
 // URLマッチパターン（wxt.config.ts の host_permissions と同期すること）
 export const MATCH_URLS = [
   { name: "google", url: "*://*.google.com/*" },
-  { name: "twitter", url: "*://*.twitter.com/*" },
   { name: "x", url: "*://*.x.com/*" },
   { name: "youtube", url: "*://*.youtube.com/*" },
   { name: "yahoo", url: "*://*.yahoo.co.jp/*" },
