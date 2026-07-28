@@ -76,7 +76,6 @@ export default defineContentScript({
       subtree: true,
     });
 
-    // ⭐ YouTubeのSPA遷移（検索実行やページ切り替え）を検知してリセット＆再処理
     window.addEventListener("yt-navigate-finish", () => {
       resetProcessed();
       runFullProcess();
