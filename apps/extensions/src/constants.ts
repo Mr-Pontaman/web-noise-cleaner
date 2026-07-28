@@ -59,7 +59,7 @@ export const SITE_CONFIGS: Record<SiteKey, SiteConfig> = {
   youtube: {
     label: "YouTube",
     keywordContainer:
-      "ytd-compact-video-renderer, ytd-rich-item-renderer, ytd-video-renderer, .ytd-item-section-renderer",
+      "ytd-compact-video-renderer, ytd-rich-item-renderer, ytd-video-renderer", // .ytd-item-section-renderer を外す
     elementSelectors: [
       "ytd-rich-section-renderer",
       "ytd-ad-slot-renderer",

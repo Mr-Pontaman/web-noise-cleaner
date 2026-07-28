@@ -1,43 +1,59 @@
-// 要素を隠す汎用関数
-export const applyElementFilter = (
-  root: HTMLElement | Document,
-  selectors: readonly string[]
-) => {
-  if (!selectors || selectors.length === 0) return;
+const PROCESSED = "data-wnc-processed";
 
-  selectors.forEach((selector) => {
-    const elements = Array.from(root.querySelectorAll(selector));
-    elements.forEach((el) => {
-      const target = el as HTMLElement;
-      if (target.style.display !== "none") {
-        target.style.display = "none";
-      }
-    });
+export function hideElement(el: HTMLElement) {
+  el.style.setProperty("opacity", "0.01", "important");
+  el.style.setProperty("pointer-events", "none", "important");
+}
+
+export function resetProcessed(root: Document | HTMLElement = document) {
+  const processedEls = root.querySelectorAll<HTMLElement>(`[${PROCESSED}]`);
+  processedEls.forEach((el) => {
+    el.removeAttribute(PROCESSED);
+    el.style.removeProperty("opacity");
+    el.style.removeProperty("pointer-events");
   });
-};
+}
 
-export const applyKeywordFilter = (
-  root: HTMLElement | Document,
-  containerSelector: string,
+export function processNode(
+  node: Node,
+  elementSelectors: readonly string[],
+  keywordContainer: string,
   keywords: string[]
-) => {
-  if (!containerSelector) return;
+) {
+  if (!(node instanceof HTMLElement)) return;
 
-  const containers = Array.from(root.querySelectorAll(containerSelector));
-  containers.forEach((container) => {
-    const target = container as HTMLElement;
-    if (target.style.display === "none") return;
+  const candidates: HTMLElement[] = [
+    node,
+    ...node.querySelectorAll<HTMLElement>("*"),
+  ];
 
-    const textContent = target.textContent || "";
-    // aria-labelも含めてテキスト判定
-    const labels = Array.from(target.querySelectorAll("[aria-label]"))
-      .map((el) => el.getAttribute("aria-label"))
-      .filter(Boolean);
+  for (const el of candidates) {
+    if (el.hasAttribute(PROCESSED)) continue;
+    el.setAttribute(PROCESSED, "true");
 
-    const combinedText = `${textContent} ${labels.join(" ")}`;
-
-    if (keywords.some((keyword) => combinedText.includes(keyword))) {
-      target.style.display = "none";
+    // -----------------------------
+    // 要素フィルター
+    // -----------------------------
+    if (elementSelectors.length > 0) {
+      if (elementSelectors.some((selector) => el.matches(selector))) {
+        hideElement(el);
+        continue;
+      }
     }
-  });
-};
+
+    // -----------------------------
+    // キーワードフィルター
+    // -----------------------------
+    if (keywordContainer && el.matches(keywordContainer)) {
+      const labels = Array.from(el.querySelectorAll("[aria-label]"))
+        .map((x) => x.getAttribute("aria-label"))
+        .filter(Boolean);
+
+      const text = `${el.textContent ?? ""} ${labels.join(" ")}`;
+
+      if (keywords.some((k) => text.includes(k))) {
+        hideElement(el);
+      }
+    }
+  }
+}
