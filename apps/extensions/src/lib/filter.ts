@@ -50,8 +50,9 @@ export function processNode(
         .filter(Boolean);
 
       const text = `${el.textContent ?? ""} ${labels.join(" ")}`;
+      const upperText = text.toUpperCase();
 
-      if (keywords.some((k) => text.includes(k))) {
+      if (keywords.some((k) => upperText.includes(k.toUpperCase()))) {
         hideElement(el);
       }
     }

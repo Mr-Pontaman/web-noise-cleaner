@@ -52,6 +52,7 @@ export const SITE_CONFIGS: Record<SiteKey, SiteConfig> = {
     elementSelectors: [
       '[aria-label*="トレンド"]',
       '[aria-label*="Trends"]',
+      '[aria-label*="Trend"]',
       '[aria-label*="おすすめユーザー"]',
       '[aria-label*="Who to follow"]',
     ],
@@ -94,7 +95,7 @@ export const DEFAULT_SETTINGS = {
   },
   noise_keywords: NOISE_KEYWORDS,
   floating_button: {
-    enabled: true,
+    enabled: false,
     position: "bottom-right",
   },
 } satisfies StorageSettings;
