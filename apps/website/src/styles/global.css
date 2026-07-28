@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@import "@web-noise-cleaner/ui/styles";
+
+@layer base {
+  body {
+    letter-spacing: var(--tracking-normal);
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "@web-noise-cleaner/website",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "lint": "echo 'no lint config yet'",
+    "typecheck": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/react": "^4.2.5",
+    "@tailwindcss/vite": "^4.3.2",
+    "@web-noise-cleaner/ui": "workspace:*",
+    "astro": "^5.7.10",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^4.3.2",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "prettier": "^3.9.5",
+    "prettier-plugin-astro": "0.14.1"
+  }
+}
