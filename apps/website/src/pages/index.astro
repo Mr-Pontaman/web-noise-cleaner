@@ -7,6 +7,7 @@ import {
   CardDescription,
 } from "@web-noise-cleaner/ui/components/ui/card";
 import { FaqSection } from "@/components/faq-section";
+import { IssueSection } from "@/components/problems-issues";
 import { DlButton } from "@/components/dl-button";
 import { Footer } from "@/components/layout/footer";
 import { features, supportedSites, installSteps, metadata } from "@/constants";
@@ -182,5 +183,6 @@ import { features, supportedSites, installSteps, metadata } from "@/constants";
   </section>
   <!-- FAQ Section -->
   <FaqSection client:only="react" />
+  <IssueSection client:only="react" />
   <Footer />
 </Layout>

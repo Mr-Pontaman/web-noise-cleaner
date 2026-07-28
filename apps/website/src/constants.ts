@@ -52,7 +52,11 @@ export const installSteps = [
   },
 ];
 
-export const faqs = [
+type FaqItem = {
+  question: string;
+  answer: string;
+};
+export const faqs: FaqItem[] = [
   {
     question: "Chrome Web Storeからインストールできますか？",
     answer:
@@ -61,10 +65,22 @@ export const faqs = [
   {
     question: "自動でアップデートされますか？",
     answer:
-      "ストア版ではないため自動更新はされません。最新版を利用するにはダウンロードリンクから新しいzipファイルをダウンロードし、拡張機能として読み込ませる必要があります。",
+      "ストア版ではないため自動更新はされません。最新版を利用するにはダウンロードリンクから新しいzipファイルをダウンロードし、古い拡張機能を削除してから新しいものを読み込んでください",
   },
   {
     question: "どのブラウザで動作しますか？",
     answer: "Google Chrome、Brave で動作確認済み ",
+  },
+];
+type IssueItem = {
+  issue: string;
+  detail: string;
+};
+export const issues: IssueItem[] = [
+  {
+    issue: "拡張機能が機能しなくなった",
+    detail: `1. 対象サイト側で消したい要素の '識別子' が変わる可能性があります。その場合は対象サイトで拡張機能が動作しなくなります。
+2. 対象サイト側のBot検知が厳格になった場合、拡張機能が動作しなくなる可能性があります。 
+      `,
   },
 ];
