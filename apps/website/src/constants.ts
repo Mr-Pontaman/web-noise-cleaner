@@ -1,5 +1,6 @@
-export const GITHUB_REPO = "https://github.com/Mr-Pontaman/web-noise-cleaner";
-export const RELEASE_URL = `${GITHUB_REPO}/releases/continuous`;
+export const GITHUB_REPO = "/web-noise-cleaner";
+export const GITHUB_FULL_REPO = `https://github.com/Mr-Pontaman${GITHUB_REPO}`;
+export const RELEASE_URL = `${GITHUB_FULL_REPO}/releases/continuous`;
 
 export const metadata = {
   title: "Web Noise Cleaner",

@@ -2,7 +2,6 @@
 @import "shadcn/tailwind.css";
 @import "tw-animate-css";
 
-/* Scan shadcn UI components in this package for class usage */
 @source "./components";
 
 @custom-variant dark (&:is(.dark *));

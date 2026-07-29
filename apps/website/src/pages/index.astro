@@ -11,6 +11,7 @@ import { IssueSection } from "@/components/problems-issues";
 import { DlButton } from "@/components/dl-button";
 import { Footer } from "@/components/layout/footer";
 import { features, supportedSites, installSteps, metadata } from "@/constants";
+import { CiYoutube } from "react-icons/ci";
 ---
 
 <Layout title={metadata.title} description={metadata.description}>
@@ -52,7 +53,7 @@ import { features, supportedSites, installSteps, metadata } from "@/constants";
         <div class="w-full max-w-70 lg:hidden">
           <div class="rounded-2xl shadow-xl ring-1 ring-border/30">
             <img
-              src={`${import.meta.env.BASE_URL}/hero-2.png`}
+              src={`${import.meta.env.BASE_URL}/hero-1.png`}
               alt="Web Noise Cleaner のポップアップ画面"
               class="w-full h-auto rounded-2xl"
             />
@@ -61,7 +62,7 @@ import { features, supportedSites, installSteps, metadata } from "@/constants";
 
         <!-- Right: Hero text + CTA -->
         <div
-          class="flex flex-col items-center text-center lg:items-start lg:text-left"
+          class="flex flex-col relative items-center text-center lg:items-start lg:text-left"
         >
           <div
             class="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary"
@@ -86,6 +87,23 @@ import { features, supportedSites, installSteps, metadata } from "@/constants";
           </p>
           <div class="mt-8 flex flex-wrap items-center gap-4">
             <DlButton />
+          </div>
+        </div>
+
+        <!-- Hero-img-3 -->
+        <div
+          class="max-lg:hidden lg:absolute -bottom-10 right-4 xl:right-12 rotate-12 z-10 rounded-2xl shadow-xl ring-1 ring-border/40"
+        >
+          <div class="relative">
+            <CiYoutube
+              color="white"
+              className="size-4 absolute top-1 left-1 z-20"
+            />
+            <img
+              src={`${import.meta.env.BASE_URL}/hero-3.png`}
+              alt="Web Noise Cleaner のポップアップ画面"
+              class="w-80 lg:w-100 xl:w-120 h-auto rounded-2xl shadow-2xl"
+            />
           </div>
         </div>
       </div>
