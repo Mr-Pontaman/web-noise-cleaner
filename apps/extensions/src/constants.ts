@@ -63,6 +63,7 @@ export const SITE_CONFIGS: Record<SiteKey, SiteConfig> = {
       "ytd-ad-slot-renderer",
       "ytd-banner-promo-renderer",
       "#secondary",
+      ".ytp-fullscreen-grid-stills-container",
     ],
   },
   yahoo: {
