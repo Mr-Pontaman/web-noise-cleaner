@@ -36,7 +36,6 @@ export default defineConfig([
         },
       ],
       "@typescript-eslint/explicit-function-return-type": "off",
-
       "no-console": ["warn", { allow: ["warn", "error"] }],
     },
   },

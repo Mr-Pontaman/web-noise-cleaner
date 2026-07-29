@@ -14,6 +14,7 @@ export default defineContentScript({
       window.location.hostname.includes(key)
     ) as SiteKey | undefined;
 
+    // 対象サイトにアクセスしていない
     if (!siteKey) return;
 
     const config = SITE_CONFIGS[siteKey];
@@ -90,7 +91,7 @@ export default defineContentScript({
       runFullProcess();
     });
 
-    // フローティング設定 -- ShadowDOM
+    // フローティング設定 - ShadowDOM
     const ui = await createShadowRootUi(ctx, {
       name: "settings-panel",
       position: "inline",

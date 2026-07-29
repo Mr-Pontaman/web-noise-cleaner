@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { browser } from "wxt/browser";
 
+// popup側で使うmode-toggle
 export type Theme = "dark" | "light" | "system";
 
 type ThemeProviderProps = {

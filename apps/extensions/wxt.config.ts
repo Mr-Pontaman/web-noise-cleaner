@@ -2,6 +2,7 @@ import { MATCH_URLS } from "./src/constants";
 import { metadata } from "./src/lib/metadata";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "wxt";
+import pkg from "./package.json";
 
 const { appName, description } = metadata;
 
@@ -16,7 +17,7 @@ export default defineConfig({
   },
   manifest: {
     name: appName,
-    version: "0.1.0",
+    version: pkg.version,
     description: description,
     permissions: ["storage", "declarativeNetRequest"],
     host_permissions: MATCH_URLS.map((item) => item.url),

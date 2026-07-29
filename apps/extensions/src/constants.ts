@@ -24,25 +24,22 @@ export const SITE_CONFIGS: Record<SiteKey, SiteConfig> = {
     elementSelectors: [],
     forceEnglish: () => {
       const url = new URL(window.location.href);
-      // 1. Googleドメインか確認 (念のため)
       if (!url.hostname.includes("google.")) return;
-      // 2. 「トップページ(/)」か「検索ページ(/search)」以外は処理しない
+      // 「トップページ(/)」か「検索ページ(/search)」以外は処理しない
       const isHome = url.pathname === "/";
       const isSearch = url.pathname === "/search";
       if (!isHome && !isSearch) return;
 
-      // 3. すでに英語設定ならループ防止のために何もしない
+      // すでに英語設定ならループ防止のために何もしない
       if (
         url.searchParams.get("hl") === "en" &&
         url.searchParams.get("gl") === "US"
       )
         return;
 
-      // 4. パラメータを付与
       url.searchParams.set("hl", "en");
       url.searchParams.set("gl", "US");
 
-      // 5. replaceを使うと履歴に残らないため、ブラウザの「戻る」が正常に動く
       window.location.replace(url.toString());
     },
   },
@@ -60,7 +57,7 @@ export const SITE_CONFIGS: Record<SiteKey, SiteConfig> = {
   youtube: {
     label: "YouTube",
     keywordContainer:
-      "ytd-compact-video-renderer, ytd-rich-item-renderer, ytd-video-renderer", // .ytd-item-section-renderer を外す
+      "ytd-compact-video-renderer, ytd-rich-item-renderer, ytd-video-renderer",
     elementSelectors: [
       "ytd-rich-section-renderer",
       "ytd-ad-slot-renderer",
@@ -71,7 +68,7 @@ export const SITE_CONFIGS: Record<SiteKey, SiteConfig> = {
   yahoo: {
     label: "Yahoo! JAPAN",
     keywordContainer:
-      ".sw-Card, .newsFeed-entry, .TopicListItem, .TweetList_item",
+      ".sw-Card, .newsFeed-entry, .TopicListItem, .TweetList_item, ul.newsFeed_list > li, #accr ol > li, #cmtrate ol > li",
     elementSelectors: [],
   },
 };
@@ -79,7 +76,7 @@ export const SITE_CONFIGS: Record<SiteKey, SiteConfig> = {
 // デフォルトのノイズキーワード
 export const NOISE_KEYWORDS = ["海外の反応", "日本絶賛", "日本称賛"];
 
-// 2. ストレージの初期状態（既存のDEFAULT_SETTINGS）
+// ストレージの初期状態
 export const DEFAULT_SETTINGS = {
   force_english: {
     enabled: true,
@@ -100,8 +97,7 @@ export const DEFAULT_SETTINGS = {
   },
 } satisfies StorageSettings;
 
-// ─── FeatureSection 共通定義 ────────────────────────────────────────
-// popup / content 両方で共有
+// popup / contentのshadowDOM UI 両方で共有
 export const FEATURE_SECTIONS: FeatureSectionDef[] = [
   {
     key: "element_filter",
@@ -154,7 +150,6 @@ export const FLOATING_BUTTON_POSITION_CLASSES: Record<
   "bottom-left": "bottom-4 left-4",
 };
 
-// URLマッチパターン（wxt.config.ts の host_permissions と同期すること）
 export const MATCH_URLS = [
   { name: "google", url: "*://*.google.com/*" },
   { name: "x", url: "*://*.x.com/*" },

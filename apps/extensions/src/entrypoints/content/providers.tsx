@@ -4,7 +4,9 @@ import { DARK_THEME_KEY } from "@/constants";
 
 const queryClient = new QueryClient();
 
-// Theme と Tanstack-Query のProvider
+/* 
+   shadowDOM用なのでpopup側では使わない 
+ */
 export function Providers({ children }: { children: ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>

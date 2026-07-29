@@ -18,7 +18,7 @@ interface FeatureSectionsListProps {
 }
 
 /**
- * popup と content/SettingsPanel の両方で共通利用する。
+ * popup と content/SettingsPanel の両方で共通利用
  */
 export function FeatureSectionsList({
   settings,
