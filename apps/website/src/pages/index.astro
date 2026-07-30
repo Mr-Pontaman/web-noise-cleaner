@@ -12,6 +12,7 @@ import { DlButton } from "@/components/dl-button";
 import { Footer } from "@/components/layout/footer";
 import { features, supportedSites, installSteps, metadata } from "@/constants";
 import { CiYoutube } from "react-icons/ci";
+import ImportantNotice from "@/components/important-notice";
 ---
 
 <Layout title={metadata.title} description={metadata.description}>
@@ -177,30 +178,30 @@ import { CiYoutube } from "react-icons/ci";
           ))
         }
       </div>
+      <ImportantNotice />
     </div>
-  </section>
-
-  <!-- Installation screenshot -->
-  <section class="px-6 pb-16 lg:px-8">
-    <div class="mx-auto max-w-xl">
-      <div
-        class="relative overflow-hidden rounded-xl shadow-lg ring-1 ring-border/40 bg-muted/10"
-      >
-        <img
-          src={`${import.meta.env.BASE_URL}/hero-2.png`}
-          alt="ブラウザの拡張機能管理画面"
-          class="w-full h-auto object-contain"
-          loading="lazy"
-        />
+    <!-- Installation screenshot -->
+    <section class="px-6 pb-16 lg:px-8 mt-10">
+      <div class="mx-auto max-w-xl">
+        <div
+          class="relative overflow-hidden rounded-xl shadow-lg ring-1 ring-border/40 bg-muted/10"
+        >
+          <img
+            src={`${import.meta.env.BASE_URL}/hero-2.png`}
+            alt="ブラウザの拡張機能管理画面"
+            class="w-full h-auto object-contain"
+            loading="lazy"
+          />
+        </div>
+        <p class="mt-3 text-xs text-center text-muted-foreground">
+          Chrome の拡張機能管理画面 —
+          デベロッパーモードをONにして拡張機能を読み込みます
+        </p>
       </div>
-      <p class="mt-3 text-xs text-center text-muted-foreground">
-        Chrome の拡張機能管理画面 —
-        デベロッパーモードをONにして拡張機能を読み込みます
-      </p>
-    </div>
+    </section>
+    <!-- FAQ Section -->
+    <FaqSection client:only="react" />
+    <IssueSection client:only="react" />
+    <Footer />
   </section>
-  <!-- FAQ Section -->
-  <FaqSection client:only="react" />
-  <IssueSection client:only="react" />
-  <Footer />
 </Layout>
