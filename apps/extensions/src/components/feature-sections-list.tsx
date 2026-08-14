@@ -1,35 +1,19 @@
 import { FeatureSection } from "@/components/feature-section";
 import { KeywordManager } from "@/components/keyword-manager";
 import { FEATURE_SECTIONS } from "@/constants";
-import { FeatureSettings } from "@/types";
+import { FeatureKey, FeatureSettings, StorageSettings } from "@/types";
 
 interface FeatureSectionsListProps {
-  settings: {
-    element_filter: FeatureSettings;
-    keyword_filter: FeatureSettings;
-    force_english: FeatureSettings;
-    noise_keywords: string[];
-  };
-  onFeatureChange: (
-    key: "force_english" | "element_filter" | "keyword_filter",
-    updatedConfig: FeatureSettings
-  ) => void;
+  settings: StorageSettings;
+  onFeatureChange: (key: FeatureKey, updatedConfig: FeatureSettings) => void;
   onKeywordsChange: (newKeywords: string[]) => void;
 }
 
-/**
- * popup と content/SettingsPanel の両方で共通利用
- */
-export function FeatureSectionsList({
+export const FeatureSectionsList = ({
   settings,
   onFeatureChange,
   onKeywordsChange,
-}: FeatureSectionsListProps) {
-  const handleKeywordsChange = (newKeywords: string[]) => {
-    onKeywordsChange(newKeywords);
-  };
-
-  // forceEnglish と 他 でグループを分けるのは、forceEnglishは一番下に置きたいため
+}: FeatureSectionsListProps) => {
   const sectionsBeforeKeywords = FEATURE_SECTIONS.filter(
     (d) => d.key !== "force_english"
   );
@@ -53,7 +37,7 @@ export function FeatureSectionsList({
 
       <KeywordManager
         keywords={settings.noise_keywords}
-        onKeywordsChange={handleKeywordsChange}
+        onKeywordsChange={onKeywordsChange}
       />
 
       <FeatureSection
@@ -67,4 +51,4 @@ export function FeatureSectionsList({
       />
     </>
   );
-}
+};

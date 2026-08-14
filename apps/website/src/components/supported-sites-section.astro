@@ -1,0 +1,25 @@
+---
+import { Card } from "@web-noise-cleaner/ui/components/ui/card";
+import { DlButton } from "@/components/dl-button";
+import { supportedSites } from "@/constants";
+---
+
+<section class="px-6 py-16 lg:px-8 bg-muted/30">
+  <div class="mx-auto max-w-5xl text-center">
+    <h2 class="text-2xl font-bold mb-8">対応サイト</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {
+        supportedSites.map((site) => (
+          <Card>
+            <div class="text-3xl mb-2">{site.icon}</div>
+            <div class="font-medium text-sm">{site.name}</div>
+          </Card>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<div class="mt-10 flex items-center justify-center gap-x-6">
+  <DlButton />
+</div>

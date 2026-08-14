@@ -1,12 +1,14 @@
 import { SiteKey } from "./constants";
 
+export type FeatureKey = "force_english" | "element_filter" | "keyword_filter";
+
 export interface FeatureSettings {
   enabled: boolean;
   targets: Record<SiteKey, boolean>;
 }
 
 export interface FeatureSectionDef {
-  key: "force_english" | "element_filter" | "keyword_filter";
+  key: FeatureKey;
   title: string;
   description: string;
   allowedSites: SiteKey[];
@@ -14,7 +16,9 @@ export interface FeatureSectionDef {
 }
 
 export type FloatingButtonPosition =
-  "bottom-right" | "top-right" | "bottom-left";
+  | "bottom-right"
+  | "top-right"
+  | "bottom-left";
 
 export interface FloatingButtonSettings {
   enabled: boolean;

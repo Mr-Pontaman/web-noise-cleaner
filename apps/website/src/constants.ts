@@ -8,7 +8,6 @@ export const metadata = {
     "X（Twitter）・YouTube・Google・Yahoo! JAPAN から不要なノイズを除去",
 };
 
-// HERO
 export const features = [
   {
     title: "キーワードフィルター",
