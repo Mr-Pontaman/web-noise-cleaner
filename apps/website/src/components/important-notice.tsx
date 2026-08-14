@@ -7,7 +7,7 @@ import {
 } from "@web-noise-cleaner/ui/components/ui/item";
 import { TriangleAlert } from "lucide-react";
 
-const ImportantNotice = () => {
+export const ImportantNotice = () => {
   return (
     <Item className="ring ring-mauve-300 rounded-2xl bg-accent-foreground/60 shadow my-4">
       <ItemMedia variant="icon">
@@ -22,5 +22,3 @@ const ImportantNotice = () => {
     </Item>
   );
 };
-
-export default ImportantNotice;

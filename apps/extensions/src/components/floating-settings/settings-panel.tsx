@@ -4,26 +4,14 @@ import { Button } from "@web-noise-cleaner/ui/components/ui/button";
 import { FeatureSectionsList } from "@/components/feature-sections-list";
 import { useSettings } from "@/hooks/use-settings";
 import { metadata } from "@/lib/metadata";
-import { FeatureSettings } from "@/types";
 
 interface SettingsPanelProps {
   onClose: () => void;
 }
 
-// ShadowDOM で表示される設定画面
-export function SettingsPanel({ onClose }: SettingsPanelProps) {
-  const { settings, isLoading, updateSettings } = useSettings();
-
-  const handleFeatureChange = (
-    key: "force_english" | "element_filter" | "keyword_filter",
-    updatedConfig: FeatureSettings
-  ) => {
-    updateSettings({ ...settings, [key]: updatedConfig });
-  };
-
-  const handleKeywordsChange = (newKeywords: string[]) => {
-    updateSettings({ ...settings, noise_keywords: newKeywords });
-  };
+export const SettingsPanel = ({ onClose }: SettingsPanelProps) => {
+  const { settings, isLoading, updateFeatureSettings, updateKeywords } =
+    useSettings();
 
   return (
     <div className="h-full flex flex-col bg-background">
@@ -51,11 +39,11 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
         ) : (
           <FeatureSectionsList
             settings={settings}
-            onFeatureChange={handleFeatureChange}
-            onKeywordsChange={handleKeywordsChange}
+            onFeatureChange={updateFeatureSettings}
+            onKeywordsChange={updateKeywords}
           />
         )}
       </main>
     </div>
   );
-}
+};

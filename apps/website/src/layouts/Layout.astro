@@ -26,7 +26,7 @@ const { title, description } = Astro.props;
         ) {
           return localStorage.getItem("theme");
         }
-        return "light"; // OSの設定に関わらず、デフォルトを強制的に light にする
+        return "light";
       };
       const isDark = getThemePreference() === "dark";
       document.documentElement.classList[isDark ? "add" : "remove"]("dark");

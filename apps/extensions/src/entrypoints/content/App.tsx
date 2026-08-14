@@ -2,11 +2,13 @@ import { FloatingSettings } from "@/components/floating-settings/floating-settin
 import { Providers } from "./providers";
 import { Toaster } from "@web-noise-cleaner/ui/components/ui/sonner";
 
-export default function App() {
+const App = () => {
   return (
     <Providers>
       <FloatingSettings />
       <Toaster />
     </Providers>
   );
-}
+};
+
+export default App;

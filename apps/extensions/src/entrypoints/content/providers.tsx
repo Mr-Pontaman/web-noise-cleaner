@@ -1,21 +1,19 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { browser } from "wxt/browser";
 import { DARK_THEME_KEY } from "@/constants";
 
 const queryClient = new QueryClient();
 
-/* 
-   shadowDOM用なのでpopup側では使わない 
- */
-export function Providers({ children }: { children: ReactNode }) {
+export const Providers = ({ children }: { children: ReactNode }) => {
   return (
     <QueryClientProvider client={queryClient}>
       <ContentThemeWrapper>{children}</ContentThemeWrapper>
     </QueryClientProvider>
   );
-}
+};
 
-function ContentThemeWrapper({ children }: { children: ReactNode }) {
+const ContentThemeWrapper = ({ children }: { children: ReactNode }) => {
   const [themeClass, setThemeClass] = useState<string>("");
 
   useEffect(() => {
@@ -56,5 +54,6 @@ function ContentThemeWrapper({ children }: { children: ReactNode }) {
       mediaQuery.removeEventListener("change", onSystemChange);
     };
   }, []);
+
   return <div className={themeClass}>{children}</div>;
-}
+};

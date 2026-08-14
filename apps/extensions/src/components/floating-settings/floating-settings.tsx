@@ -7,7 +7,7 @@ import { SettingsPanel } from "@/components/floating-settings/settings-panel";
 
 type AnimationState = "closed" | "open" | "closing";
 
-export function FloatingSettings() {
+export const FloatingSettings = () => {
   const { settings } = useSettings();
   const [animState, setAnimState] = useState<AnimationState>("closed");
 
@@ -62,4 +62,4 @@ export function FloatingSettings() {
       )}
     </>
   );
-}
+};

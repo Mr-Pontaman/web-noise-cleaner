@@ -7,7 +7,7 @@ import {
 import { faqs } from "@/constants";
 import { Card, CardContent } from "@web-noise-cleaner/ui/components/ui/card";
 
-export function FaqSection() {
+export const FaqSection = () => {
   return (
     <section className="mb-14">
       <div className="mx-auto max-w-3xl">
@@ -31,4 +31,4 @@ export function FaqSection() {
       </div>
     </section>
   );
-}
+};

@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { browser } from "wxt/browser";
 
-// popup側で使うmode-toggle
 export type Theme = "dark" | "light" | "system";
 
 type ThemeProviderProps = {
@@ -22,12 +21,12 @@ const initialState: ThemeProviderState = {
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
-export function ThemeProvider({
+export const ThemeProvider = ({
   children,
   defaultTheme = "system",
   storageKey = "theme",
   ...props
-}: ThemeProviderProps) {
+}: ThemeProviderProps) => {
   const [theme, setTheme] = useState<Theme>(defaultTheme);
 
   useEffect(() => {
@@ -89,7 +88,7 @@ export function ThemeProvider({
       {children}
     </ThemeProviderContext.Provider>
   );
-}
+};
 
 export const useTheme = () => {
   const context = useContext(ThemeProviderContext);

@@ -18,24 +18,20 @@ export type SiteKey = "google" | "x" | "youtube" | "yahoo";
 export const SITE_CONFIGS: Record<SiteKey, SiteConfig> = {
   google: {
     label: "Google",
-    // *カードの MjjYud というクラス名は明日にも変わっている可能性が高い。
-    // カードがsearchの２個下のdivであることは変わらないはず。
     keywordContainer: "#search div[class*='MjjYud'], #search > div > div",
     elementSelectors: [],
     forceEnglish: () => {
       const url = new URL(window.location.href);
       if (!url.hostname.includes("google.")) return;
-      // 「トップページ(/)」か「検索ページ(/search)」以外は処理しない
+
       const isHome = url.pathname === "/";
       const isSearch = url.pathname === "/search";
       if (!isHome && !isSearch) return;
 
-      // すでに英語設定ならループ防止のために何もしない
-      if (
+      const isAlreadyEnglish =
         url.searchParams.get("hl") === "en" &&
-        url.searchParams.get("gl") === "US"
-      )
-        return;
+        url.searchParams.get("gl") === "US";
+      if (isAlreadyEnglish) return;
 
       url.searchParams.set("hl", "en");
       url.searchParams.set("gl", "US");
@@ -74,10 +70,8 @@ export const SITE_CONFIGS: Record<SiteKey, SiteConfig> = {
   },
 };
 
-// デフォルトのノイズキーワード
 export const NOISE_KEYWORDS = ["海外の反応", "日本絶賛", "日本称賛"];
 
-// ストレージの初期状態
 export const DEFAULT_SETTINGS = {
   force_english: {
     enabled: true,
@@ -98,7 +92,6 @@ export const DEFAULT_SETTINGS = {
   },
 } satisfies StorageSettings;
 
-// popup / contentのshadowDOM UI 両方で共有
 export const FEATURE_SECTIONS: FeatureSectionDef[] = [
   {
     key: "element_filter",

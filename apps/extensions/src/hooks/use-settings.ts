@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { StorageSettings } from "@/types";
+import { browser } from "wxt/browser";
+import { FeatureKey, FeatureSettings, StorageSettings } from "@/types";
 import { DEFAULT_SETTINGS } from "@/constants";
 import { getSettings } from "@/lib/storage";
 
@@ -24,14 +25,26 @@ export const useSettings = () => {
     },
   });
 
+  const settings = query.data ?? DEFAULT_SETTINGS;
+
   const updateSettings = (newSettings: StorageSettings) => {
     mutation.mutate(newSettings);
   };
 
+  const updateFeatureSettings = (key: FeatureKey, config: FeatureSettings) => {
+    updateSettings({ ...settings, [key]: config });
+  };
+
+  const updateKeywords = (keywords: string[]) => {
+    updateSettings({ ...settings, noise_keywords: keywords });
+  };
+
   return {
-    settings: query.data ?? DEFAULT_SETTINGS,
+    settings,
     isLoading: query.isLoading,
     mutation,
     updateSettings,
+    updateFeatureSettings,
+    updateKeywords,
   };
 };

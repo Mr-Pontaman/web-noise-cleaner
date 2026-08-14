@@ -97,7 +97,6 @@ export const FeatureSection = ({
         />
       </div>
 
-      {/* 設定詳細エリア（有効時のみ表示） */}
       {config.enabled && (
         <div className="mt-1 pl-1 space-y-2 border-t border-zinc-100 dark:border-zinc-900 pt-2.5">
           <div className="flex items-center justify-between">

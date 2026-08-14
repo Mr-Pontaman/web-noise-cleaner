@@ -8,7 +8,7 @@ import {
 } from "@web-noise-cleaner/ui/components/ui/dropdown-menu";
 import { useTheme } from "@/components/theme/theme-provider";
 
-export function ModeToggle() {
+export const ModeToggle = () => {
   const { setTheme } = useTheme();
 
   return (
@@ -33,4 +33,4 @@ export function ModeToggle() {
       </DropdownMenuContent>
     </DropdownMenu>
   );
-}
+};
